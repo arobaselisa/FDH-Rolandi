@@ -20,6 +20,5 @@
            "page_1_upper":1,
            "width_box": 0,
            "height_box":0,
-           "ocr_proba_threshold":0.1, 
-           "mean_proba_threshold":0.5}
-        } 
+           "ocr_proba_threshold":0.2, 
+           "mean_proba_threshold":0.6}} 
