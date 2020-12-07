@@ -23,7 +23,7 @@ def main(argv):
           print('Starting the process...')
           #os.system("python segmentation.py -n " + name)
           #os.system("python ocr.py -n " + name + " -k " + key)
-          #os.system("python bounds.py -n " + name)
+          os.system("python bounds.py -n " + name)
           os.system("python extraction_and_cleaning.py -n " + name)
        except:
           print('Error occured')

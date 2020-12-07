@@ -12,35 +12,7 @@ import string
 import re
 
 
-#Define attributes to extract in images as well as their parameters
-dict_attribute = {'Name': {'page_0_lower': 0, 
-                            'page_0_upper':4/10, 
-                            'page_1_lower':4/10, 
-                            'page_1_upper':7/10,
-                            'width_box': 0.4,
-                            'height_box':0.4,
-                            'ocr_proba_threshold':0.2, 
-                            'mean_proba_threshold':0.7},
-                   'Scene': {'page_0_lower': 0, 
-                             'page_0_upper':4/10, 
-                             'page_1_lower':5/10, 
-                             'page_1_upper':8/10, 
-                             'width_box': 0.4,
-                             'height_box':0.4,
-                             'ocr_proba_threshold':0.1, 
-                             'mean_proba_threshold':0.7},
-                   'Description': {'page_0_lower': 0, 
-                                   'page_0_upper':1/2, 
-                                   'page_1_lower':1/2, 
-                                   'page_1_upper':1,
-                                   'width_box': 0,
-                                   'height_box':0,
-                                   'ocr_proba_threshold':0.1, 
-                                   'mean_proba_threshold':0.5}
-                  }
-
-
-def define_range(path, attribute):
+def define_range(path, attribute, dict_attribute):
     ''' Defining the ranges of the first and second pages '''
     # Original image
     shape = cv2.imread(path,0).shape
@@ -71,7 +43,7 @@ def change_x(coord, x_0_lower, x_0_upper, x_1_lower, x_1_upper):
 
 
 
-def find_bounds(text, dict_bounds, mask, x_0_lower, x_0_upper, x_1_lower, x_1_upper, attribute):
+def find_bounds(text, dict_bounds, mask, x_0_lower, x_0_upper, x_1_lower, x_1_upper, attribute, dict_attribute):
     ''' Finds the names and bounds in the image '''
     proba = np.array([])
     
@@ -99,7 +71,7 @@ def find_bounds(text, dict_bounds, mask, x_0_lower, x_0_upper, x_1_lower, x_1_up
 
 
 
-def find_attributes_one_image(page, libretto):
+def find_attributes_one_image(page, libretto, dict_attribute):
     ''' Returns the attributes and bounds in one image '''
     
     # Data from segmentation
@@ -109,7 +81,7 @@ def find_attributes_one_image(page, libretto):
     dict_bounds = dict()
     for i, attribute in enumerate(dict_attribute.keys()):
         # Create x ranges
-        x_0_lower, x_0_upper, x_1_lower, x_1_upper = define_range("./data/" + libretto + "/0_Images/" + page + ".jpg", attribute)
+        x_0_lower, x_0_upper, x_1_lower, x_1_upper = define_range("./data/" + libretto + "/0_Images/" + page + ".jpg", attribute, dict_attribute)
         
         # Threshold for attributes segmentation
         mask = np.where(data[i+1]>dict_attribute[attribute]['ocr_proba_threshold'],1,0).astype(np.uint8)
@@ -118,7 +90,7 @@ def find_attributes_one_image(page, libretto):
         image_df = pd.read_csv("./data/" + libretto + "/2_OCR_results/annotations_" + page + ".csv", index_col=0)
 
         # Find the attributes and bounds
-        image_df.apply(lambda row: find_bounds(row, dict_bounds, mask, x_0_lower, x_0_upper, x_1_lower, x_1_upper, attribute), axis=1)
+        image_df.apply(lambda row: find_bounds(row, dict_bounds, mask, x_0_lower, x_0_upper, x_1_lower, x_1_upper, attribute, dict_attribute), axis=1)
     return dict_bounds
                 
 
@@ -145,7 +117,7 @@ def load_json_in_dict(path):
         return json.load(json_file)
 
 
-def find_attributes(libretto):
+def find_attributes(libretto, dict_attribute):
     attributes_bounds = []
     pages = []
     # Going through all the images
@@ -155,7 +127,7 @@ def find_attributes(libretto):
             #print(file_without_extension)
             pages.append(file_without_extension)
             # Find attribute in the image
-            dict_bounds = find_attributes_one_image(file_without_extension, libretto)
+            dict_bounds = find_attributes_one_image(file_without_extension, libretto, dict_attribute)
             attributes_bounds.append(dict_bounds)
             #print(dict_bounds)
             continue
@@ -175,8 +147,9 @@ def main(argv):
          name = arg
    if path.isdir('./data/'+ name):
        try: 
+          dict_attribute = load_json_in_dict("./params.json")
           print("Finding the intersection of the bounds from OCR and segmentation...")
-          dictionnary = find_attributes(name)
+          dictionnary = find_attributes(name, dict_attribute)
           print("Saving the results in the file ./2_OCR_results/"+name+".json")
           save_dict_in_json(dictionnary, "./data/" + name + "/2_OCR_results/"+name+".json")
        except:
