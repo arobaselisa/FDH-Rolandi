@@ -157,8 +157,8 @@ function linkWidth(d){
     }
   }
   if(forceProperties.link.enabled2){
-    if(d.act1 != null){
-      val += d.act1;
+    if(d.act2 != null){
+      val += d.act2;
     }
   }
 	if(forceProperties.link.enabled3){
