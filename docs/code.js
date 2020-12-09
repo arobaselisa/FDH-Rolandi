@@ -132,17 +132,17 @@ function linkOpacity(d){
 function circleRadius(d){
   val = 0
   if(forceProperties.link.enabled1){
-    if(d.act1 != null){
+    if(typeof d.act1 !== 'undefined'){
       val += d.act1;
     }
   }
   if(forceProperties.link.enabled2){
-    if(d.act2 != null){
+    if(typeof d.act2 !== 'undefined'){
       val += d.act2;
     }
   }
 	if(forceProperties.link.enabled3){
-    if(d.act3 != null){
+    if(typeof d.act3 !== 'undefined'){
       val += d.act3;
     }
   }
@@ -152,17 +152,17 @@ function circleRadius(d){
 function linkWidth(d){
   val = 0
   if(forceProperties.link.enabled1){
-    if(d.act1 != null){
+    if(typeof d.act1 !== 'undefined'){
       val += d.act1;
     }
   }
   if(forceProperties.link.enabled2){
-    if(d.act2 != null){
+    if(typeof d.act2 !== 'undefined' ){
       val += d.act2;
     }
   }
 	if(forceProperties.link.enabled3){
-    if(d.act3 != null){
+    if(typeof d.act3 !== 'undefined'){
       val += d.act3;
     }
   }
