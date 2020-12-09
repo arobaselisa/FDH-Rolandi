@@ -1,0 +1,15 @@
+{
+  "nodes": [
+    {"id": "A", "act1":7, "act2":15, "act3":1},
+    {"id": "B", "act1":6, "act2":6, "act3":6},
+    {"id": "C", "act1":15, "act2":15, "act3":1},
+    {"id": "D", "act1":5, "act2":2, "act3":0}
+  ],
+  "links": [
+    {"source": "A", "target": "C", "act1":3, "act2":0, "act3":1},
+    {"source": "A", "target": "D", "act1":7, "act2":30, "act3":0},
+    {"source": "B", "target": "C", "act1":0, "act2":15, "act3":12},
+    {"source": "A", "target": "B", "act1":0, "act2":0, "act3":1}
+  ]
+}
+ 
