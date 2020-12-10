@@ -36,7 +36,8 @@ If someone wants to create a visualization network for a new libretto, they have
 * **Initialize folder**: `python init_folders.py -n <libretto_name>`
 * **Move imported images to correct folder**: This step has to be done manually. You have to move the imported libretto images into the folder "data/<libretto_name>/0_Images".
 * **[Optional] Change hyper-parameters**: You can change the hyperparamters in "params/params.json".
-* **Create Network Tree of the libretto**: `python make_tree.py -n <libretto_name> -k  <path_to_google_vision_KEY>`
+* **Create Network Tree of the libretto**: `python make_tree.py -n <libretto_name> -k  <path_to_google_vision_KEY>` During the process, you will be asked to write the password to the cluster where the model is, only Elisa and Gonxhe know it, please contact us if you want to use this.
+
 * **Move newly created network_2.json**: Move manually the network_2.json file from "data/<libretto_name>/3_Network" into "/docs/data"
 * **Add network into website**: At line 74 in "/docs/index.html", add `<option value="network_2.json"><libretto_name></option>`
 * **Visualize the netwoek**: Go to the [website](https://arobaselisa.github.io/FDH-Rolandi/) and select the <libretto_name> you want to visualize.
