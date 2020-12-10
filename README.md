@@ -50,17 +50,17 @@ If someone wants to create a visualization network for a new libretto, they have
 Contains the data we trained the [dh-Segment](https://github.com/dhlab-epfl/dhSegment-torch) model on. Pages of random libretti and their manually segmented pair.
 * **libretti**
 Contains the folders created by the `init_folders.py` script. One per libretto.
-##### 0_Images
+    * **0_Images**:
 Contains the different pages of the libretto.
-##### 1_Segmentation_results
+    * **1_Segmentation_results**:
 Contains the output of the segmentation model, numpy arrays of dimensions `size_of_the_image * 4`
-##### 2_OCR_results
+    * **2_OCR_results**:
 Contains the results of the segmentations done by Google Vision API in csv. Also contains a json of the full text.
-##### 3_Network
+    * **3_Network**:
 Contains network.json : the network representation of the libretto.
 network_truth.json : if one made by hand the ground truth of the network.
 network_2.json : the network representation used for the website.
-##### 4_Evaluation
+    * **4_Evaluation**:
 Contains a plot of the error of our algorithm.
 ### docs
 ### draft
