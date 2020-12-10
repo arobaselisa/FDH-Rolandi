@@ -20,6 +20,7 @@ def main(argv):
                 os.makedirs('data/' + name + '/1_Segmentation_results')
                 os.makedirs('data/' + name + '/2_OCR_results')
                 os.makedirs('data/' + name + '/3_Network')
+                os.makedirs('data/' + name + '/4_Evaluation')
                 print('Successfully created folder ' + name)
            except:
                 print('Error occured when creating folder ' + name)
