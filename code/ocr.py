@@ -91,7 +91,12 @@ def main(argv):
       if opt in ("-n", "--name"):
          name = arg
       if opt in ("-k", "--key"):
-         key = KEY_ELISA if arg == 'Elisa' else KEY_GONXHE
+         if arg == 'Elisa':
+             key = KEY_ELISA
+         elif arg == 'Gonxhe':
+             key = KEY_GONXHE
+         else:
+             key = arg
    if path.isdir('./data/'+ name):
        try: 
           print('Performing OCR on all images, might take a few minutes...')
