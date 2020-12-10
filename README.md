@@ -46,9 +46,9 @@ If someone wants to create a visualization network for a new libretto, they have
 
 ### code
 ### data
-#### training_data
+* **training_data**
 Contains the data we trained the [dh-Segment](https://github.com/dhlab-epfl/dhSegment-torch) model on. Pages of random libretti and their manually segmented pair.
-#### libretti
+* **libretti**
 Contains the folders created by the `init_folders.py` script. One per libretto.
 ##### 0_Images
 Contains the different pages of the libretto.
