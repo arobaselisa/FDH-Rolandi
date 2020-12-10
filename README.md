@@ -1,14 +1,14 @@
 # Project of Foundation of Digital Humanities (DH-405 EPFL)
 
 ## Table of content
-[Goal](#goal)
-[Datasets](#datasets)
-[Team Members](#team-members)
-[Link to Website](#link-to-website)
-[Requirements](#requirements)
-[Create Visualization for new libretto](#create-visualization-for-new-libretto)
-[Folders](#folders)
-[Wiki-Report](#wiki-report)
+* [Goal](#goal)
+* [Datasets](#datasets)
+* [Team Members](#team-members)
+* [Link to Website](#link-to-website)
+* [Requirements](#requirements)
+* [Create Visualization for new libretto](#create-visualization-for-new-libretto)
+* [Folders](#folders)
+* [Wiki-Report](#wiki-report)
 
 ## Goal
 
