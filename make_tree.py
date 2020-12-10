@@ -11,7 +11,7 @@ def main(argv):
    try:
       opts, args = getopt.getopt(argv,"n:k:",["name=", "key="])
    except getopt.GetoptError:
-      print('make_tree.py -n <name> -k <key>') # Key is either 'Elisa' or 'Gonxhe'
+      print('make_tree.py -n <name> -k <key>') # Key path for google vision API
       sys.exit(2)
    for opt, arg in opts:
       if opt in ("-n", "--name"):
