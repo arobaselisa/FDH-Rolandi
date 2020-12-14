@@ -129,7 +129,7 @@ def plot_distances(libretto, data_gt, data_predict, total_error):
                labels = ["Act " + str(i) for i in range(1, df.shape[1])])
     
     # Save image
-    plt.savefig("../data/"+ libretto + "/4_Evaluation/error_plot.png")
+    plt.savefig("../data/"+ libretto + "/4_Evaluation/error_plot.png", bbox_inches='tight')
 
 
 def main(argv):
